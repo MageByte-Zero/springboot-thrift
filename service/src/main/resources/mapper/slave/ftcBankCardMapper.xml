@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zero.mapper.slave.FtcBankCardMapper">
+        <!-- 基金支持银行信息 -->
+        <resultMap type="com.zero.model.FtcSupportBank" id="ftcSupportBankMap">
+                <id column="id" property="id"/>
+                <result column="create_time" property="createTime"/>
+                <result column="modify_time" property="modifyTime"/>
+                <result column="bank_code" property="bankCode"/>
+                <result column="bank_name" property="bankName"/>
+                <result column="single_payment_limit" property="singlePaymentLimit"/>
+                <result column="day_payment_limit" property="dayPaymentLimit"/>
+                <result column="month_payment_limit" property="monthPaymentLimit"/>
+                <result column="bank_logo" property="bankLogo"/>
+        </resultMap>
+
+        <!--查询支持银行卡列表-->
+        <select id="getSupportBankList" parameterType="map" resultMap="ftcSupportBankMap">
+                select *
+                  from ftc_bank_cards
+                where 1 = 1
+                <if test=" flag == true" >
+                  and is_enable = 'true'
+                </if>
+        </select>
+
+</mapper>
