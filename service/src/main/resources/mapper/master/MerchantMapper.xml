@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zero.mapper.master.MerchantMapper">
 
-    <resultMap type="com.zero.model.Merchant" id="BaseResultMap">
+    <resultMap type="zero.model.Merchant" id="BaseResultMap">
         <result column="merchant_appkey" property="appKey"/>
         <result column="merchant_appsecret" property="appSecret"/>
         <result column="source" property="source"/>

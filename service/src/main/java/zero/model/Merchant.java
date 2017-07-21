@@ -1,6 +1,6 @@
 package zero.model;
 
-import com.zero.database.BaseEntity;
+import zero.database.BaseEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Table;

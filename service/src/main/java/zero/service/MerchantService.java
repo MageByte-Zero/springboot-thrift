@@ -1,6 +1,7 @@
 package zero.service;
 
-import com.zero.model.Merchant;
+
+import zero.model.Merchant;
 
 import java.util.List;
 

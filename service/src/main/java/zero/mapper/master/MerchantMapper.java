@@ -1,7 +1,8 @@
 package zero.mapper.master;
 
-import com.zero.database.BaseMapper;
-import com.zero.model.Merchant;
+
+import zero.database.BaseMapper;
+import zero.model.Merchant;
 
 import java.util.List;
 

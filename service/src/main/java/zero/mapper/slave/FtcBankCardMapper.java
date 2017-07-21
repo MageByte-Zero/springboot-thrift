@@ -1,7 +1,7 @@
 package zero.mapper.slave;
 
 
-import com.zero.model.FtcSupportBank;
+import zero.model.FtcSupportBank;
 
 import java.util.List;
 import java.util.Map;
