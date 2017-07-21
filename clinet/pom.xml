@@ -11,5 +11,11 @@
 
     <artifactId>clinet</artifactId>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.thrift</groupId>
+            <artifactId>libthrift</artifactId>
+            <version>${thrift.version}</version>
+        </dependency>
+    </dependencies>
 </project>

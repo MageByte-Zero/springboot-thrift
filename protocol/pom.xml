@@ -10,6 +10,52 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>com-zero-protocol</artifactId>
+    <packaging>jar</packaging>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.thrift</groupId>
+            <artifactId>libthrift</artifactId>
+            <version>${thrift.version}</version>
+        </dependency>
+    </dependencies>
+
+<build>
+    <plugins>
+        <!---thrift 打包插件-->
+        <plugin>
+            <groupId>org.apache.thrift.tools</groupId>
+            <artifactId>maven-thrift-plugin</artifactId>
+            <version>${maven.thrift.plugin.version}</version>
+            <configuration>
+                <thriftExecutable>thrift</thriftExecutable>
+                <!--根据本地的thrift.exe执行文件路径进行配置-->
+                <!---->
+                <thriftExecutable>D:\Program Files\Thrift\thrift.exe</thriftExecutable>
+            </configuration>
+            <executions>
+                <execution>
+                    <id>thrift-sources</id>
+                    <phase>generate-sources</phase>
+                    <goals>
+                        <goal>compile</goal>
+                    </goals>
+                </execution>
+                <execution>
+                    <id>thrift-test-sources</id>
+                    <phase>generate-test-sources</phase>
+                    <goals>
+                        <goal>testCompile</goal>
+                    </goals>
+                    <configuration>
+                        <excludes>
+                            <exclude>*.thrift</exclude>
+                        </excludes>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
+    </plugins>
+</build>
 
 </project>

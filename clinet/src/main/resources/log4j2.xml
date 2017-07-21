@@ -2,13 +2,13 @@
 <configuration status="OFF">
     <!-- 日志级别  ALL > TRACE > DEBUG > INFO > WARN > ERROR > FATAL > OFF -->
     <properties>
-        <property name="info_file">/data/server/logs/service/info.log</property>
-        <property name="warn_file">/data/server/logs/service/warn.log</property>
-        <property name="error_file">/data/server/logs/service/error.log</property>
+        <property name="info_file">/data/server/logs/client/info.log</property>
+        <property name="warn_file">/data/server/logs/client/warn.log</property>
+        <property name="error_file">/data/server/logs/client/error.log</property>
         <property name="log_pattern">%d{yyyy-MM-dd HH:mm:ss z} %-5level [%t] %l - %msg%xEx%n</property>
-        <property name="error_file_gz">/data/server/logs/service/error-%d{yyyy-MM-dd}-%i.log.gz</property>
-        <property name="warn_file_gz">/data/server/logs/service/warn-%d{yyyy-MM-dd}-%i.log.gz</property>
-        <property name="info_file_gz">/data/server/logs/service/info-%d{yyyy-MM-dd}-%i.log.gz</property>
+        <property name="error_file_gz">/data/server/logs/client/error-%d{yyyy-MM-dd}-%i.log.gz</property>
+        <property name="warn_file_gz">/data/server/logs/client/warn-%d{yyyy-MM-dd}-%i.log.gz</property>
+        <property name="info_file_gz">/data/server/logs/client/info-%d{yyyy-MM-dd}-%i.log.gz</property>
         <property name="every_file_size">10MB</property><!-- 日志切割的最小单位 -->
         <Property name="baseDir">/data/server/logs</Property>
     </properties>

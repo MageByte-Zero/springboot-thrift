@@ -1,0 +1,17 @@
+
+thrift:
+  protocol: binary
+  port: 88996
+  host: 10.3.20.124
+
+pool:
+  serviceIp: 10.3.20.124
+  prot: 88996
+  conTimeOut: 20000
+  maxActive: 10
+  maxIdle: 10
+  minIdle: 5
+  maxWait: 10
+  testOnBorrow: true
+  testOnReturn: true
+  testWhileIdle: true
