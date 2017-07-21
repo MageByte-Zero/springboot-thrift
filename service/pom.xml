@@ -17,6 +17,10 @@
             <artifactId>libthrift</artifactId>
             <version>${thrift.version}</version>
         </dependency>
+        <dependency>
+            <groupId>springboot-thrift</groupId>
+            <artifactId>com-zero-protocol</artifactId>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
