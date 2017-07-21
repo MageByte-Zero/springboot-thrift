@@ -1,12 +1,17 @@
 package zero.thrift;
 
 import org.springframework.beans.factory.InitializingBean;
-import org.springframework.context.ApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import zero.util.SpringContextUtils;
 
+/**
+ * 启动服务
+ */
 @Component
 public class ThriftTcpServerStart implements InitializingBean {
+
+    @Autowired
+    private ThriftTcpServer server;
 
 //    public static void main(String[] args) throws Exception {
 //
@@ -36,9 +41,6 @@ public class ThriftTcpServerStart implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        ApplicationContext applicationContext = SpringContextUtils.getApplicationContext();
-        ThriftTcpServer server = new ThriftTcpServer();
-        server.setApplicationContext(applicationContext);
         server.start();
     }
 }

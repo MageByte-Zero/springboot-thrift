@@ -10,8 +10,4 @@
 		<setting name="logImpl" value="LOG4J2" />
 	</settings>
 
-	<plugins>
-		<plugin interceptor="com.zero.aop.SqlCostInterceptor"></plugin>
-	</plugins>
-
 </configuration>

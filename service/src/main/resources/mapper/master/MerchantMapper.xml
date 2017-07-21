@@ -16,7 +16,7 @@
 		from vc_merchant
     </select>
 
-    <update id="update" parameterType="com.zero.model.Merchant">
+    <update id="update" parameterType="zero.model.Merchant">
         UPDATE vc_merchant
         <set>
             merchant_appkey = #{appKey}

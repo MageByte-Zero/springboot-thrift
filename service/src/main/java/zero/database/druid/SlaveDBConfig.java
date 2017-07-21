@@ -17,7 +17,7 @@ import javax.sql.DataSource;
  * Created by jianqing.li on 2017/7/5.
  */
 @Configuration
-@MapperScan(basePackages = {"com.zero.mapper.slave"},
+@MapperScan(basePackages = {"zero.mapper.slave"},
         sqlSessionFactoryRef = "slaveSqlSessionFactory")
 public class SlaveDBConfig extends AbstractConfig {
 

@@ -1,11 +1,7 @@
-server:
-  port: 8080
-  context-path: /springboot-demo/
-
 druid:
   master:
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/bbs_vc?characterEncoding=UTF-8@&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://rds.jfz.net:3306/bbs_vc?characterEncoding=UTF-8@&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=utf-8
     username: root
     password:
     #初始化连接数量，最大最小连接数
@@ -36,7 +32,7 @@ druid:
 
   slave:
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/cbs_ftc?characterEncoding=UTF-8@&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://rds.jfz.net:3306/cbs_ftc?characterEncoding=UTF-8@&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=utf-8
     username: root
     password:
     #初始化连接数量，最大最小连接数
@@ -67,11 +63,11 @@ druid:
 
 mybatis:
     master:
-        type-aliases-package: com.zero.model #实体类的包-别名
+        type-aliases-package: zero.model #实体类的包-别名
         mapper-locations: classpath:mapper/master/*.xml #Mapper的xml文件
         config-location: classpath:mybatis-config.xml
     slave:
-        type-aliases-package: com.zero.model #实体类的包-别名
+        type-aliases-package: zero.model #实体类的包-别名
         mapper-locations: classpath:mapper/slave/*.xml #Mapper的xml文件
         config-location: classpath:mybatis-config.xml
 
@@ -83,7 +79,7 @@ pagehelper:
 
 mapper:
     mappers:
-        - com.zero.database.BaseMapper
+        - zero.database.BaseMapper
     not-empty: false
     identity: MYSQL
 
@@ -102,7 +98,7 @@ spring:
 
 thrift:
   protocol: binary
-  port: 88996
+  port: 8899
   host: 10.3.20.124
   acceptQueueSizePerThread: 5
 

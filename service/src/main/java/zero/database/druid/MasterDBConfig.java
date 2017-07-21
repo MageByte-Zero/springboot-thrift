@@ -19,7 +19,7 @@ import javax.sql.DataSource;
  * Created by jianqing.li on 2017/7/5.
  */
 @Configuration
-@MapperScan(basePackages = {"com.zero.mapper.master"},
+@MapperScan(basePackages = {"zero.mapper.master"},
         sqlSessionFactoryRef = "masterSqlSessionFactory")
 public class MasterDBConfig extends AbstractConfig {
 

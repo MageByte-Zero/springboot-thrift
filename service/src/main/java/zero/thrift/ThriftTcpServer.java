@@ -17,6 +17,8 @@ import org.springframework.aop.support.AopUtils;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
+import org.springframework.stereotype.Component;
 import zero.annotation.ThriftInteface;
 
 import java.util.Map;
@@ -24,7 +26,17 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class ThriftTcpServer {
+/**
+ * 基于Thrift的rpc服务器，将多个接口暴露到同一端口
+ * <p>
+ * tcp 二进制传输
+ * <p>
+ * 初始化时，将所有标注了ThriftInteface并且实现了Thrift接口的类自动注册到Thrift服务器
+ */
+@Component
+public class ThriftTcpServer implements ApplicationContextAware {
+
+
 
     private Logger logger = LoggerFactory.getLogger(ThriftTcpServer.class);
 
@@ -79,6 +91,7 @@ public class ThriftTcpServer {
             tArgs.acceptQueueSizePerThread(acceptQueueSizePerThread);//selector线程等待请求队列，业务方是期望快速返回的，服务端繁忙时客户端也不会一直等下去，所以不需设置太多
             //多线程非阻塞IO服务模式，兼顾资源使用与高性能
             server = new TThreadedSelectorServer(tArgs);
+            server.setServerEventHandler(new ThriftServerEventHandler());
             //当jvm关闭的时候，会执行系统中已经设置的所有通过方法addShutdownHook添加的钩子，当系统执行完这些钩子后，jvm才会关闭
             Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
                 @Override
@@ -138,9 +151,9 @@ public class ThriftTcpServer {
 
     public void start() {
         init();
-        server.setServerEventHandler(new ThriftServerEventHandler());
-        server.serve();
         logger.info("soa tcp server start at port[ + {} + ]...", port);
+        server.serve();
+
     }
 
     public void stop() {
