@@ -33,8 +33,7 @@
         <mybatis.version>1.2.0</mybatis.version>
         <common.lang3.version>3.6</common.lang3.version>
         <guava.version>22.0</guava.version>
-        <!--<thrift.version>0.9.2</thrift.version>-->
-        <thrift.version>0.10.0</thrift.version>
+        <thrift.version>0.9.2</thrift.version>
         <commonPool.version>1.6</commonPool.version>
         <maven.thrift.plugin.version>0.1.11</maven.thrift.plugin.version>
     </properties>

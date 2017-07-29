@@ -32,7 +32,7 @@
                 <thriftExecutable>thrift</thriftExecutable>
                 <!--根据本地的thrift.exe执行文件路径进行配置-->
                 <!---->
-                <thriftExecutable>D:\Java\DevelopTools\thrift-0.10.0.exe</thriftExecutable>
+                <thriftExecutable>D:\Program Files\Thrift\thrift.exe</thriftExecutable>
             </configuration>
             <executions>
                 <execution>
