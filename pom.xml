@@ -159,7 +159,18 @@
                 <version>${guava.version}</version>
             </dependency>
 
-
+            <!-- deep copy -->
+            <dependency>
+                <groupId>net.sf.dozer</groupId>
+                <artifactId>dozer</artifactId>
+                <version>5.5.1</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>commons-lang3</artifactId>
+                        <groupId>org.apache.commons</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
         </dependencies>
 
     <build>

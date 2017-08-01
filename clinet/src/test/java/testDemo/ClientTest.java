@@ -2,7 +2,9 @@ package testDemo;
 
 import com.zero.Application;
 import com.zero.proxy.ThriftClientProxy;
+import com.zero.thrift.protocol.request.TCompanyParam;
 import com.zero.thrift.protocol.request.TUserParam;
+import com.zero.thrift.protocol.response.TCompanyResult;
 import com.zero.thrift.protocol.response.TUserResult;
 import com.zero.thrift.protocol.service.UserService;
 import org.apache.thrift.TException;
@@ -73,5 +75,21 @@ public class ClientTest {
         logger.info("result : " + userResult);
         //关闭资源
         transport.close();
+    }
+
+    /**
+     * 测试testDozer
+     */
+    @Test
+    public void testDozer() {
+        UserService.Iface client = (UserService.Iface) thriftClientProxy.getClient(UserService.class);
+        TCompanyParam tCompanyParam = new TCompanyParam();
+        tCompanyParam.setUserName("helow");
+        try {
+            TCompanyResult companyResult = client.getCompanyUserList(tCompanyParam);
+            logger.info(companyResult.toString());
+        } catch (TException e) {
+            e.printStackTrace();
+        }
     }
 }

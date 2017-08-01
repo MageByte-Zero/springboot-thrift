@@ -5,4 +5,6 @@ include "../struct/response/UserResponse.thrift"
  service UserService
  {
      UserResponse.TUserResult userInfo(1:UserRequest.TUserParam request),
+
+     UserResponse.TCompanyResult getCompanyUserList(1:UserRequest.TCompanyParam request),
  }
