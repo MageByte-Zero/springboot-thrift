@@ -22,6 +22,7 @@ import org.springframework.stereotype.Component;
 import zero.annotation.ThriftInteface;
 
 import java.util.Map;
+import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -91,7 +92,7 @@ public class ThriftTcpServer implements ApplicationContextAware {
             tArgs.acceptQueueSizePerThread(acceptQueueSizePerThread);//selector线程等待请求队列，业务方是期望快速返回的，服务端繁忙时客户端也不会一直等下去，所以不需设置太多
             //多线程非阻塞IO服务模式，兼顾资源使用与高性能
             server = new TThreadedSelectorServer(tArgs);
-            server.setServerEventHandler(new ThriftServerEventHandler());
+//            server.setServerEventHandler(new ThriftServerEventHandler());
             //当jvm关闭的时候，会执行系统中已经设置的所有通过方法addShutdownHook添加的钩子，当系统执行完这些钩子后，jvm才会关闭
             Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
                 @Override
@@ -151,8 +152,14 @@ public class ThriftTcpServer implements ApplicationContextAware {
 
     public void start() {
         init();
-        logger.info("soa tcp server start at port[ + {} + ]...", port);
-        server.serve();
+
+        Executors.newSingleThreadExecutor().execute(new Runnable() {
+            @Override
+            public void run() {
+                logger.info("soa tcp server start at port[ + {} + ]...", port);
+                server.serve(); //启动服务
+            }
+        });
 
     }
 

@@ -8,60 +8,59 @@ import org.apache.thrift.transport.TSocket;
 import org.apache.thrift.transport.TTransport;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 /**
  * 连接池实现
  */
-@Service
+@Component
 public class ConnectionProviderImpl implements ConnectionProvider, InitializingBean, DisposableBean {
 
     /**
      * 服务的IP地址
      */
-    @Value("${thrift.host}")
-    private String serviceIP;
+//    @Value("${pool.serviceIp}")
+    private String serviceIP = "10.3.20.124";
     /**
      * 服务的端口
      */
-    @Value("${thrift.port}")
-    private int servicePort;
+//    @Value("${pool.port}")
+    private int servicePort = 8899;
     /**
      * 连接超时配置
      */
-    @Value("${pool.conTimeOut}")
-    private int conTimeOut;
+//    @Value("${pool.conTimeOut}")
+    private int conTimeOut = 20000;
     /**
      * 可以从缓存池中分配对象的最大数量
      */
-    @Value("${pool.maxActive}")
-    private int maxActive;
+//    @Value("${pool.maxActive}")
+    private int maxActive = 10;
     /**
      * 缓存池中最大空闲对象数量
      */
-    @Value("${pool.maxIdle}")
-    private int maxIdle;
+//    @Value("${pool.maxIdle}")
+    private int maxIdle = 10;
     /**
      * 缓存池中最小空闲对象数量
      */
-    @Value("${pool.minIdle}")
-    private int minIdle;
+//    @Value("${pool.minIdle}")
+    private int minIdle = 5;
     /**
      * 阻塞的最大数量
      */
-    @Value("${pool.maxWait}")
-    private long maxWait;
+//    @Value("${pool.maxWait}")
+    private long maxWait = 10;
 
     /**
      * 从缓存池中分配对象，是否执行PoolableObjectFactory.validateObject方法
      */
-    @Value("${pool.testOnBorrow}")
-    private boolean testOnBorrow;
-    @Value("${pool.testOnReturn}")
-    private boolean testOnReturn;
-    @Value("${pool.testWhileIdle}")
-    private boolean testWhileIdle;
+//    @Value("${pool.testOnBorrow}")
+    private boolean testOnBorrow = true;
+//    @Value("${pool.testOnReturn}")
+    private boolean testOnReturn = true;
+//    @Value("${pool.testWhileIdle}")
+    private boolean testWhileIdle = true;
 
     /**
      * 对象缓存池
