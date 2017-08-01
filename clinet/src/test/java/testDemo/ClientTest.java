@@ -14,6 +14,8 @@ import org.apache.thrift.transport.TSocket;
 import org.apache.thrift.transport.TTransport;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -21,6 +23,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = Application.class)// 指定spring-boot的启动类
 public class ClientTest {
+
+    private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
     private ThriftClientProxy thriftClientProxy;
@@ -35,7 +39,7 @@ public class ClientTest {
         userParam.setId("16");
         try {
             TUserResult userResult = client.userInfo(userParam);
-            System.out.println(userResult.toString());
+            logger.info(userResult.toString());
         } catch (TException e) {
             e.printStackTrace();
         }
@@ -66,7 +70,7 @@ public class ClientTest {
         } catch (TException e) {
             e.printStackTrace();
         }
-        System.out.println("result : " + userResult);
+        logger.info("result : " + userResult);
         //关闭资源
         transport.close();
     }
