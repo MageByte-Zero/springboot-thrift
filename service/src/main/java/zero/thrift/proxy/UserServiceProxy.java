@@ -6,11 +6,11 @@ import com.zero.thrift.protocol.response.TCompanyResult;
 import com.zero.thrift.protocol.response.TUserResult;
 import com.zero.thrift.protocol.service.UserService;
 import org.apache.thrift.TException;
-import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
 import zero.annotation.ThriftInteface;
 import zero.model.Status;
 import zero.model.User;
+import zero.util.DozerMapperSingleton;
 import zero.vo.CompanyResultVO;
 
 import java.util.*;
@@ -36,7 +36,7 @@ public class UserServiceProxy implements UserService.Iface {
      */
     @Override
     public TCompanyResult getCompanyUserList(TCompanyParam request) throws TException {
-        Mapper mapper = new DozerBeanMapper();
+        Mapper mapper = DozerMapperSingleton.getInstance();
         Status status = new Status();
         status.setMsg("状态1");
         status.setState(1);
