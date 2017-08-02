@@ -1,6 +1,7 @@
 package zero.service;
 
 
+import com.zero.common.exception.ServiceException;
 import zero.model.FtcSupportBank;
 
 import java.util.List;
@@ -11,5 +12,5 @@ import java.util.Map;
  */
 public interface BankCardService {
 
-    List<FtcSupportBank> getSupportBankList(Map<String, Object> param);
+    List<FtcSupportBank> getSupportBankList(Map<String, Object> param) throws ServiceException;
 }

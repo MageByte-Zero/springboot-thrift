@@ -57,7 +57,7 @@ public class ClientTest {
         // 协议要和服务端一致
         //HelloTNonblockingServer
         TProtocol protocol = new TBinaryProtocol(transport);
-        TMultiplexedProtocol mp = new TMultiplexedProtocol(protocol, "com.zero.thrift.protocol.service.UserService");
+        TMultiplexedProtocol mp = new TMultiplexedProtocol(protocol, UserService.class.getName());
         //HelloTHsHaServer
         ////使用二进制协议
         //TProtocol protocol = new TBinaryProtocol(transport);

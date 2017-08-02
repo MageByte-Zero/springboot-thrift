@@ -13,6 +13,7 @@
         <module>protocol</module>
         <module>config</module>
         <module>clinet</module>
+        <module>common</module>
     </modules>
 
     <parent>

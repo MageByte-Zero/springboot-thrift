@@ -1,5 +1,9 @@
 package zero.service.impl;
 
+import com.zero.common.exception.ExceptionEnum;
+import com.zero.common.exception.ServiceException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import zero.mapper.slave.FtcBankCardMapper;
@@ -14,12 +18,19 @@ import java.util.Map;
  */
 @Service
 public class BankCardServiceImpl implements BankCardService {
+        private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private FtcBankCardMapper ftcBankCardMapper;
 
     @Override
-    public List<FtcSupportBank> getSupportBankList(Map<String, Object> param) {
-        return ftcBankCardMapper.getSupportBankList(param);
+    public List<FtcSupportBank> getSupportBankList(Map<String, Object> param) throws ServiceException {
+        try {
+            return ftcBankCardMapper.getSupportBankList(param);
+        } catch (Exception e) {
+            logger.error("获取银行卡异常", e);
+            throw new ServiceException(ExceptionEnum.FAIL);
+        }
+
     }
 }

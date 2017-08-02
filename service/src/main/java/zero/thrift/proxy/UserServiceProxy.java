@@ -7,9 +7,11 @@ import com.zero.thrift.protocol.response.TUserResult;
 import com.zero.thrift.protocol.service.UserService;
 import org.apache.thrift.TException;
 import org.dozer.Mapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import zero.annotation.ThriftInteface;
 import zero.model.Status;
 import zero.model.User;
+import zero.service.BankCardService;
 import zero.util.DozerMapperSingleton;
 import zero.vo.CompanyResultVO;
 
@@ -17,6 +19,10 @@ import java.util.*;
 
 @ThriftInteface
 public class UserServiceProxy implements UserService.Iface {
+
+    @Autowired
+    private BankCardService bankCardService;
+
     @Override
     public TUserResult userInfo(TUserParam request) throws TException {
         TUserResult userResult = new TUserResult();
@@ -62,4 +68,11 @@ public class UserServiceProxy implements UserService.Iface {
         TCompanyResult companyResult = mapper.map(companyResultVO, TCompanyResult.class);
         return companyResult;
     }
+
+    public void getBankCardList() {
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("flag", true);
+        bankCardService.getSupportBankList(paramMap);
+    }
+
 }
