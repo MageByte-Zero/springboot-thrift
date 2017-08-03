@@ -6,7 +6,7 @@ import com.zero.thrift.protocol.request.TCompanyParam;
 import com.zero.thrift.protocol.request.TUserParam;
 import com.zero.thrift.protocol.response.TCompanyResult;
 import com.zero.thrift.protocol.response.TUserResult;
-import com.zero.thrift.protocol.service.UserService;
+import com.zero.thrift.protocol.service.ThriftUserService;
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TBinaryProtocol;
 import org.apache.thrift.protocol.TMultiplexedProtocol;
@@ -36,7 +36,7 @@ public class ClientTest {
      */
     @Test
     public void testClient() {
-        UserService.Iface client = (UserService.Iface) thriftClientProxy.getClient(UserService.class);
+        ThriftUserService.Iface client = (ThriftUserService.Iface) thriftClientProxy.getClient(ThriftUserService.class);
         TUserParam userParam = new TUserParam();
         userParam.setId("16");
         try {
@@ -57,11 +57,11 @@ public class ClientTest {
         // 协议要和服务端一致
         //HelloTNonblockingServer
         TProtocol protocol = new TBinaryProtocol(transport);
-        TMultiplexedProtocol mp = new TMultiplexedProtocol(protocol, UserService.class.getName());
+        TMultiplexedProtocol mp = new TMultiplexedProtocol(protocol, ThriftUserService.class.getName());
         //HelloTHsHaServer
         ////使用二进制协议
         //TProtocol protocol = new TBinaryProtocol(transport);
-        UserService.Client client = new UserService.Client(mp);
+        ThriftUserService.Client client = new ThriftUserService.Client(mp);
 
         TUserParam userParam = new TUserParam();
         userParam.setId("16");
@@ -82,7 +82,7 @@ public class ClientTest {
      */
     @Test
     public void testDozer() {
-        UserService.Iface client = (UserService.Iface) thriftClientProxy.getClient(UserService.class);
+        ThriftUserService.Iface client = (ThriftUserService.Iface) thriftClientProxy.getClient(ThriftUserService.class);
         TCompanyParam tCompanyParam = new TCompanyParam();
         tCompanyParam.setUserName("helow");
         try {

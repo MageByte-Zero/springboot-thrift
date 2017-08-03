@@ -1,6 +1,8 @@
 package com.zero.common.exception;
 
-public class ServiceException extends Exception {
+import org.apache.thrift.TException;
+
+public class ServiceException extends TException {
     private ExceptionEnum exceptionEnum;
 
     public ServiceException() {
