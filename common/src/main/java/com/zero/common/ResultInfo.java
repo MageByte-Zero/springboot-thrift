@@ -1,5 +1,7 @@
 package com.zero.common;
 
+import com.zero.common.exception.ExceptionEnum;
+
 import java.io.Serializable;
 
 /**
@@ -8,7 +10,9 @@ import java.io.Serializable;
  */
 public class ResultInfo<T> implements Serializable {
 
-    private String code;
+    private boolean success = false;
+
+    private int code;
 
     private String msg;
 
@@ -17,16 +21,16 @@ public class ResultInfo<T> implements Serializable {
     public ResultInfo() {
     }
 
-    public ResultInfo(String code, String msg) {
+    public ResultInfo(int code, String msg) {
         this.code = code;
         this.msg = msg;
     }
 
-    public String getCode() {
+    public int getCode() {
         return code;
     }
 
-    public void setCode(String code) {
+    public void setCode(int code) {
         this.code = code;
     }
 
@@ -44,5 +48,16 @@ public class ResultInfo<T> implements Serializable {
 
     public void setResultData(T resultData) {
         this.resultData = resultData;
+    }
+
+    public boolean isSuccess() {
+        if (code == ExceptionEnum.SUCCESS.getCode()) {
+            this.success = true;
+        }
+        return success;
+    }
+
+    public void setSuccess(boolean success) {
+        this.success = success;
     }
 }

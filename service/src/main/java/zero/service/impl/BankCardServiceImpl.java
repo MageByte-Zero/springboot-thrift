@@ -1,5 +1,6 @@
 package zero.service.impl;
 
+import com.zero.common.ResultInfo;
 import com.zero.common.exception.ExceptionEnum;
 import com.zero.common.exception.ServiceException;
 import org.slf4j.Logger;
@@ -24,9 +25,11 @@ public class BankCardServiceImpl implements BankCardService {
     private FtcBankCardMapper ftcBankCardMapper;
 
     @Override
-    public List<FtcSupportBank> getSupportBankList(Map<String, Object> param) throws ServiceException {
+    public ResultInfo getSupportBankList(Map<String, Object> param) throws ServiceException {
+        ResultInfo resultInfo = new ResultInfo();
         try {
-            return ftcBankCardMapper.getSupportBankList(param);
+            List<FtcSupportBank> supportBankList = ftcBankCardMapper.getSupportBankList(param);
+            return ExceptionEnum.SUCCESS.buildResultVO(resultInfo, supportBankList);
         } catch (Exception e) {
             logger.error("获取银行卡异常", e);
             throw new ServiceException(ExceptionEnum.FAIL);
