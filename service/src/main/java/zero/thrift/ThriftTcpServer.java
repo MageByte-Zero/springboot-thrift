@@ -19,7 +19,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
-import zero.annotation.ThriftInteface;
+import zero.annotation.ThriftHandler;
 
 import java.util.Map;
 import java.util.concurrent.Executors;
@@ -128,7 +128,7 @@ public class ThriftTcpServer implements ApplicationContextAware {
 
     protected void registerService(TMultiplexedProcessor processor) throws Exception {
         Pattern pattern = Pattern.compile("^(.+)\\$Iface$");
-        Map<String, Object> beans = applicationContext.getBeansWithAnnotation(ThriftInteface.class);
+        Map<String, Object> beans = applicationContext.getBeansWithAnnotation(ThriftHandler.class);
         logger.info("find ThriftService: {}", beans.keySet());
         for (String beanName : beans.keySet()) {
             Object bean = beans.get(beanName);

@@ -8,7 +8,7 @@ import com.zero.thrift.protocol.service.ThriftUserService;
 import org.apache.thrift.TException;
 import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import zero.annotation.ThriftInteface;
+import zero.annotation.ThriftHandler;
 import zero.model.Status;
 import zero.model.User;
 import zero.service.BankCardService;
@@ -17,7 +17,7 @@ import zero.vo.CompanyResultVO;
 
 import java.util.*;
 
-@ThriftInteface
+@ThriftHandler
 public class UserServiceProxy implements ThriftUserService.Iface {
 
     @Autowired
