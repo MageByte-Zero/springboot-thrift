@@ -7,12 +7,10 @@ import com.zero.thrift.protocol.response.TGetBankCardListResult;
 import com.zero.thrift.protocol.response.TResponseStatus;
 import com.zero.thrift.protocol.service.ThriftBankCardService;
 import org.apache.thrift.TException;
-import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import zero.annotation.ThriftHandler;
 import zero.model.FtcSupportBank;
 import zero.service.BankCardService;
-import zero.util.DozerMapperSingleton;
 import zero.util.DozerUtil;
 
 import java.util.HashMap;
@@ -27,7 +25,6 @@ public class BankCardServiceHandler implements ThriftBankCardService.Iface {
 
     @Override
     public TGetBankCardListResult getBankCardList() throws TException {
-        Mapper mapper = DozerMapperSingleton.getInstance();
         TGetBankCardListResult result = new TGetBankCardListResult();
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("flag", true);
