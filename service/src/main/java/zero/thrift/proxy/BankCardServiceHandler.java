@@ -13,8 +13,8 @@ import zero.annotation.ThriftHandler;
 import zero.model.FtcSupportBank;
 import zero.service.BankCardService;
 import zero.util.DozerMapperSingleton;
+import zero.util.DozerUtil;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,10 +33,9 @@ public class BankCardServiceHandler implements ThriftBankCardService.Iface {
         paramMap.put("flag", true);
         ResultInfo resultInfo = bankCardService.getSupportBankList(paramMap);
         if (resultInfo.isSuccess()) {
-            List<FtcSupportBank> resultData =  (List<FtcSupportBank>) resultInfo.getResultData();
-            List<TBankInfo> thriftList = new ArrayList<>();
-            thriftList = mapper.map(resultData, thriftList.getClass());
-            result.setDataList(thriftList);
+            List<FtcSupportBank> resultData = (List<FtcSupportBank>) resultInfo.getResultData();
+            List<TBankInfo> tBankInfoList = DozerUtil.mapAsList(resultData, TBankInfo.class);
+            result.setDataList(tBankInfoList);
         }
         result.setResponseStatus(new TResponseStatus(resultInfo.getCode(), resultInfo.getMsg()));
         return result;
