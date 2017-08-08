@@ -7,6 +7,7 @@ public enum ExceptionEnum implements IException {
 
     SUCCESS(00000, "OK"),
     FAIL(99999, "fail"),
+    SYS_ERROR(99990, "system error"),
 
     RESULT_IS_NULL(10000, "resultVO is null");
 
@@ -20,12 +21,20 @@ public enum ExceptionEnum implements IException {
 
     @Override
     public int getCode() {
-        return 0;
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     @Override
     public String getMessage() {
-        return null;
+        return this.message;
     }
 
     public final <T> ResultInfo<T> buildResultVO(ResultInfo<T> resultVO, T... arg) throws ServiceException {

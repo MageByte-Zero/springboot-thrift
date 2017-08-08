@@ -29,10 +29,10 @@ public class BankCardServiceImpl implements BankCardService {
         ResultInfo resultInfo = new ResultInfo();
         try {
             List<FtcSupportBank> supportBankList = ftcBankCardMapper.getSupportBankList(param);
+            int i = 1 / 0;
             return ExceptionEnum.SUCCESS.buildResultVO(resultInfo, supportBankList);
         } catch (Exception e) {
-            logger.error("获取银行卡异常", e);
-            throw new ServiceException(ExceptionEnum.FAIL);
+            throw new ServiceException(e, ExceptionEnum.FAIL);
         }
 
     }

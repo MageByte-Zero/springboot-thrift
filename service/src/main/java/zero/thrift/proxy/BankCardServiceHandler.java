@@ -29,11 +29,11 @@ public class BankCardServiceHandler implements ThriftBankCardService.Iface {
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("flag", true);
         ResultInfo resultInfo = bankCardService.getSupportBankList(paramMap);
-        if (resultInfo.isSuccess()) {
+//        if (resultInfo.isSuccess()) {
             List<FtcSupportBank> resultData = (List<FtcSupportBank>) resultInfo.getResultData();
             List<TBankInfo> tBankInfoList = DozerUtil.mapAsList(resultData, TBankInfo.class);
             result.setDataList(tBankInfoList);
-        }
+//        }
         result.setResponseStatus(new TResponseStatus(resultInfo.getCode(), resultInfo.getMsg()));
         return result;
     }

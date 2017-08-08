@@ -8,6 +8,7 @@ druid:
     initialSize: 5
     maxActive: 10
     minIdle: 3
+    maxIdle: 10
     #获取连接等待超时的时间
     maxWait: 600000
     #超过时间限制是否回收
@@ -39,6 +40,7 @@ druid:
     initialSize: 5
     maxActive: 10
     minIdle: 3
+    maxIdle: 10
     #获取连接等待超时的时间
     maxWait: 600000
     #超过时间限制是否回收
