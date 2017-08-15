@@ -34,6 +34,9 @@
                 <!--插件可打包项目为可执行的Jar包，也可以使用mvn spring-boot:run 启动（默认tomcat）项目-->
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <executable>true</executable>
+                </configuration>
             </plugin>
         </plugins>
     </build>

@@ -30,7 +30,7 @@ public class BankCardServiceImpl implements BankCardService {
         ResultInfo resultInfo = new ResultInfo();
         try {
             List<FtcSupportBank> supportBankList = ftcBankCardMapper.getSupportBankList(param);
-            int i = 1 / 0;
+//            int i = 1 / 0;
             return ExceptionEnum.SUCCESS.buildResultVO(resultInfo, supportBankList);
         } catch (Exception e) {
             throw new ServiceException(e, ExceptionEnum.FAIL);
