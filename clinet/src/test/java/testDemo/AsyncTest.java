@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = Application.class)
 public class AsyncTest {
@@ -18,7 +21,14 @@ public class AsyncTest {
     @Test
     public void testAsynExecute() {
         for(int i =0 ;i<10;i++){
-            asynService.executeAsyncTask(i);
+            Future<Integer> integerFuture = asynService.executeAsyncTask(i);
+            try {
+                Integer integer = integerFuture.get();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
             asynService.executeAsyncTaskPlus(i);
         }
     }
