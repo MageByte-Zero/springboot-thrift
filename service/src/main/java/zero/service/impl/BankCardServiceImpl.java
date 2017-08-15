@@ -26,6 +26,7 @@ public class BankCardServiceImpl implements BankCardService {
 
     @Override
     public ResultInfo getSupportBankList(Map<String, Object> param) throws ServiceException {
+        //其实可以不用ResultInfo，但是当项目是web工程，使用ResultInfo可在controller直接返回
         ResultInfo resultInfo = new ResultInfo();
         try {
             List<FtcSupportBank> supportBankList = ftcBankCardMapper.getSupportBankList(param);
