@@ -1,5 +1,5 @@
 pool:
-  serviceIp: 10.3.20.124
+  serviceIp: 127.0.0.1
   port: 8899
   conTimeOut: 20000
   maxActive: 10
