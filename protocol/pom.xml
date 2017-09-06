@@ -31,9 +31,9 @@
             <configuration>
                 <!--根据本地的thrift.exe执行文件路径进行配置-->
                 <!---->
-                <thriftExecutable>D:\Program Files\Thrift\thrift.exe</thriftExecutable>
+               <!-- <thriftExecutable>D:\Program Files\Thrift\thrift.exe</thriftExecutable>-->
                 <!--linux环境使用-->
-                <!--<thriftExecutable>/usr/local/bin/thrift</thriftExecutable>-->
+                <thriftExecutable>/usr/local/bin/thrift</thriftExecutable>
             </configuration>
             <executions>
                 <execution>
